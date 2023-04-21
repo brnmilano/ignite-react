@@ -1,7 +1,13 @@
-import './styles/global.scss'
+import { Count } from "./components/Count";
+import { RepositoryList } from "./components/RepositoryList";
+import "./styles/global.scss";
 
 export function App() {
+  return (
+    <>
+      <RepositoryList />
 
-  
-  return <h1>Hello ReactJS</h1>
+      <Count />
+    </>
+  );
 }
