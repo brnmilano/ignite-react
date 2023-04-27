@@ -3,7 +3,7 @@ import incomeImg from '../../assets/income.svg';
 import Modal from 'react-modal';
 import outcomeImg from '../../assets/outcome.svg';
 import { Container, RadioBox, TransactionTypeContainer } from './styles';
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
 import { useTransactions } from '../../hooks/useTransactionsContext';
 
 interface NewTransactionModalProps {
@@ -19,9 +19,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
   const [amount, setAmount] = useState(0)
   const [category, setCategory] = useState('')
 
-  async function handleCreateNewTransaction(event: FormEvent) {
-    event.preventDefault(); // Evita que o submit recarregue a página 
-
+  async function handleCreateNewTransaction() {
     await CreateTransaction({
       title,
       amount,
@@ -93,7 +91,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
           onChange={event => setCategory(event.target.value)}
         />
 
-        <button type="submit" onSubmit={handleCreateNewTransaction}>
+        <button className='button' type="button" onClick={handleCreateNewTransaction}>
           Cadastrar
         </button>
       </Container>
